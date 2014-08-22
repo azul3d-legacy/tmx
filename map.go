@@ -45,6 +45,9 @@ type Map struct {
 
 	// A list of all the layers of this map.
 	Layers []*Layer
+
+	// A list of all the object groups in this map.
+	ObjectGroups []*ObjectGroup
 }
 
 // String returns a string representation of this map.

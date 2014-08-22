@@ -97,16 +97,17 @@ type xmlTerraintypes struct {
 }
 
 type xmlMap struct {
-	Version         string        `xml:"version,attr"`
-	Orientation     string        `xml:"orientation,attr"`
-	Width           int           `xml:"width,attr"`
-	Height          int           `xml:"height,attr"`
-	TileWidth       int           `xml:"tilewidth,attr"`
-	TileHeight      int           `xml:"tileheight,attr"`
-	BackgroundColor string        `xml:"backgroundcolor,attr"`
-	Properties      xmlProperties `xml:"properties"`
-	Tileset         []xmlTileset  `xml:"tileset"`
-	Layer           []xmlLayer    `xml:"layer"`
+	Version         string           `xml:"version,attr"`
+	Orientation     string           `xml:"orientation,attr"`
+	Width           int              `xml:"width,attr"`
+	Height          int              `xml:"height,attr"`
+	TileWidth       int              `xml:"tilewidth,attr"`
+	TileHeight      int              `xml:"tileheight,attr"`
+	BackgroundColor string           `xml:"backgroundcolor,attr"`
+	Properties      xmlProperties    `xml:"properties"`
+	Tileset         []xmlTileset     `xml:"tileset"`
+	Layer           []xmlLayer       `xml:"layer"`
+	Objectgroup     []xmlObjectgroup `xml:"objectgroup"`
 }
 
 // Parse parses the TMX map file data and returns a *Map.
@@ -199,6 +200,12 @@ func Parse(data []byte) (*Map, error) {
 		}
 	}
 
+	// Manager loading object groups.
+	objectGroups := make([]*ObjectGroup, len(x.Objectgroup))
+	for i, group := range x.Objectgroup {
+		objectGroups[i] = group.toObjectGroup()
+	}
+
 	// Create actual map
 	m := &Map{
 		VersionMajor:    major,
@@ -212,7 +219,7 @@ func Parse(data []byte) (*Map, error) {
 		Properties:      props,
 		Tilesets:        tilesets,
 		Layers:          layers,
+		ObjectGroups:    objectGroups,
 	}
-
 	return m, nil
 }

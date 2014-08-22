@@ -127,3 +127,7 @@ func TestBase64GZipMap(t *testing.T) {
 func TestBase64ZLibMap(t *testing.T) {
 	verify(t, "test_base64_zlib.tmx")
 }
+
+func TestObjects(t *testing.T) {
+	verify(t, "test_objects.tmx")
+}
