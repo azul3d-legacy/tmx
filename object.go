@@ -50,7 +50,7 @@ type Polyline struct {
 
 // Polygon and Polyset are identical, we share definitions here.
 type xmlPolyset struct {
-	Data string `xml:",innerxml"`
+	Data string `xml:"points,attr"`
 }
 
 func (x xmlPolyset) toPoints() (points []Point) {
@@ -73,10 +73,10 @@ func (x xmlPolyset) toPoints() (points []Point) {
 type xmlObject struct {
 	Name       string        `xml:"name,attr"`
 	Type       string        `xml:"type,attr"`
-	X          int           `xml:"x,attr`
-	Y          int           `xml:"y,attr`
-	Width      int           `xml:"width,attr`
-	Height     int           `xml:"height,attr`
+	X          int           `xml:"x,attr"`
+	Y          int           `xml:"y,attr"`
+	Width      int           `xml:"width,attr"`
+	Height     int           `xml:"height,attr"`
 	Rotation   float64       `xml:"rotation,attr"`
 	Gid        int           `xml:"gid,attr"`
 	Visible    int           `xml:"visible,attr"`
