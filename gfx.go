@@ -19,7 +19,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"azul3d.org/gfx.v1"
+	"azul3d.org/gfx.v2-dev"
 	"azul3d.org/lmath.v1"
 )
 
@@ -204,7 +204,7 @@ func Load(m *Map, c *Config, tsImages map[string]*image.RGBA) (layers map[string
 					t.WrapU = gfx.Clamp
 					t.WrapV = gfx.Clamp
 					t.MinFilter = gfx.LinearMipmapLinear
-					t.MagFilter = gfx.NearestMipmapNearest
+					t.MagFilter = gfx.Linear
 
 					// And the object.
 					obj = gfx.NewObject()
