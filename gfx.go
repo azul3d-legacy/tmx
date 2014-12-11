@@ -66,9 +66,11 @@ var (
 
 func init() {
 	Shader = &gfx.Shader{
-		Name:     "tmx.Shader",
-		GLSLVert: glslVert,
-		GLSLFrag: glslFrag,
+		Name: "tmx.Shader",
+		GLSL: &gfx.GLSLShader{
+			Vertex:   glslVert,
+			Fragment: glslFrag,
+		},
 	}
 
 	// Setup rotations
