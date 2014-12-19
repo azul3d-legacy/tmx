@@ -67,7 +67,7 @@ var (
 func init() {
 	Shader = &gfx.Shader{
 		Name: "tmx.Shader",
-		GLSL: &gfx.GLSLShader{
+		GLSL: &gfx.GLSLSources{
 			Vertex:   glslVert,
 			Fragment: glslFrag,
 		},
