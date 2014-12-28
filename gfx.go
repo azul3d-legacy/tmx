@@ -215,6 +215,7 @@ func Load(m *Map, c *Config, tsImages map[string]*image.RGBA) (layers map[string
 					obj.Textures = []*gfx.Texture{t}
 
 					// Disable face culling because of the flipped cards.
+					obj.State = gfx.NewState()
 					obj.State.FaceCulling = gfx.NoFaceCulling
 					obj.State.AlphaMode = gfx.AlphaToCoverage
 					texObjects[tsImage] = obj
